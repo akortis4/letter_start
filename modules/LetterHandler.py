@@ -41,7 +41,7 @@ class Letters():
     def update_index(self):
         if self.current_index == 25:
             self.current_index = 0
-            self.letters = ascii_uppercase
+            self.letters = list(ascii_uppercase)
             shuffle(self.letters)
         else:
             self.current_index += 1
