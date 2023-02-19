@@ -1,9 +1,23 @@
 #font style
-F_SIZE = 30
+F_SIZE = 50
 F_STYLE = 'Consolas'
+F_X = 25
+F_Y = 100
 
-#image directory
-I_DIR = '/images'
+#answer style
+A_X = 400
+A_Y = 325
+
+#random letter style
+RL_X = 600
+RL_Y = 100
+RL_SIZE = 50
+
+#image
+I_DIR = '\\images'
+I_X = 25
+I_Y = 250
+I_SCALE = (200, 200)
 
 #screen
 S_HEIGHT = 600
