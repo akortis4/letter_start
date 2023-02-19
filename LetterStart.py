@@ -16,6 +16,8 @@ class LetterStart():
         self.font = pg.font.SysFont(mo.F_STYLE, mo.F_SIZE)
         self.alphabet = list(ascii_uppercase)
         self.images = Images(getcwd() + mo.I_DIR)
+        self.shuffle_letters = True
+        self.guess_letters = []
 
     def run(self):
         while self.run_game:
@@ -31,8 +33,22 @@ class LetterStart():
     def draw_objects(self):
         image = self.images.get_image(self.alphabet[8])
         image_name = self.images.get_hidden_image_name(self.alphabet[8])
+        self.get_guess_letters(self.alphabet[8])
         self.display.blit(image, (mo.I_X, mo.I_Y))
         self.display.blit(self.font.render(image_name, True, mo.BLUE), (mo.F_X, mo.F_Y))
+        shift = 0
+        for g_letter in self.guess_letters:
+            self.display.blit(self.font.render(g_letter, True, mo.BLUE), (mo.RL_X, mo.RL_Y + shift))
+            shift += 100
+
+    def get_guess_letters(self, letter:str):
+        if self.shuffle_letters:
+            self.guess_letters = [x.upper() for x in self.alphabet if x.lower() != letter.lower()]
+            shuffle(self.guess_letters)
+            self.guess_letters = self.guess_letters[:2]
+            self.guess_letters.append(letter.upper())
+            shuffle(self.guess_letters)
+            self.shuffle_letters = False
 
 if __name__ == '__main__':
     LetterStart().run()
